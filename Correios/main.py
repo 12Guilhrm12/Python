@@ -4,7 +4,7 @@ from tkinter import ttk;
 
 from tkinter import messagebox;
 
-screen = 1; 
+screen = 0; 
 
 # Estudando na internet (stack overflow)
 # Vi uma forma de fazer FRAMES, telas diferentes,
@@ -57,8 +57,10 @@ class Menu(ttk.Frame):
         user = self.login_entry.get(); 
 
         if (password == 'correios12') and (user == 'Justin'):
-            messagebox.showinfo(title='Correios', message='Sejá bem-vindo!');
-            clearFrame()
+            messagebox.showinfo(title='Correios', message='Sejá bem-vindo!'); 
+            clearFrame(); 
+            screen = 1; 
+            update_frame(); 
             
         else:
             messagebox.showerror(title='Erro!', message='Usúario ou Senha incorretos!'); 
@@ -80,6 +82,14 @@ class App(tk.Tk):
         self.title('Correios'); 
         self.geometry('720x460'); 
 
+def update_frame():
+    if __name__ == "__main__":
+        app = App(); 
+        if (screen==0):
+            frame = Menu(app); 
+        else:
+            frame = Entregas(app); 
+        app.mainloop(); 
 
 if __name__ == "__main__":
     app = App(); 

@@ -4,6 +4,8 @@ from tkinter import ttk;
 
 from tkinter import messagebox;
 
+screen = 1; 
+
 # Estudando na internet (stack overflow)
 # Vi uma forma de fazer FRAMES, telas diferentes,
 # Usando OBJETOS. Para cada Tela, usamos objetos diferentes
@@ -19,7 +21,6 @@ def clearFrame():
     
     # Da uma limpada no frame
     frame.pack_forget()
-
 # Tela do Menu
 class Menu(ttk.Frame):
     # Constructor 
@@ -82,5 +83,8 @@ class App(tk.Tk):
 
 if __name__ == "__main__":
     app = App(); 
-    frame = Menu(app); 
+    if (screen==0):
+        frame = Menu(app); 
+    else:
+        frame = Entregas(app); 
     app.mainloop(); 
